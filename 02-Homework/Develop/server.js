@@ -10,10 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //data routes
-require('./routes/apiRoutes')(app);
+app.use(require('./routes/apiRoutes'));
 
 //html routes
-require('./routes/htmlRoutes')(app);
+app.use(require('./routes/htmlRoutes'));
 
 
 //listener
