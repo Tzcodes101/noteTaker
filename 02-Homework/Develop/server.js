@@ -1,23 +1,20 @@
 //Dependencies
 
 var express = require("express");
-var path = require ("path");
 
-var app = express();
-var PORT = 3000;
+const app = express();
+const PORT = 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//html routes
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"))
-})
+//data routes
+require('./routes/apiRoutes')(app);
 
-app.get("/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/notes.html"))
-})
+//html routes
+require('./routes/htmlRoutes')(app);
+
 
 //listener
 app.listen(PORT, function() {
