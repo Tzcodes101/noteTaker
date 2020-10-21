@@ -2,18 +2,21 @@
 
 var express = require("express");
 
-const app = express();
-const PORT = 3000;
+var app = express();
+var PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //data routes
-app.use(require('../routes/apiRoutes'));
+// app.use(require('./routes/apiRoutes'));
 
 //html routes
-app.use(require('../routes/htmlRoutes'));
+app.use(require('./routes/htmlRoutes'));
+
+// require("./routes/apiRoutes")(app);
+// require("./routes/htmlRoutes")(app);
 
 
 //listener
